@@ -1,0 +1,21 @@
+// cf. https://github.com/mkhairi/materialize-sass/blob/master/app/assets/stylesheets/materialize.scss
+@charset "UTF-8";
+
+@import "~materialize-css/sass/components/prefixer";
+@import "~materialize-css/sass/components/mixins";
+@import "~materialize-css/sass/components/color";
+@import "./materialize_overrides/color";
+
+@import "~materialize-css/sass/components/variables";
+@import "~materialize-css/sass/components/normalize";
+
+// Imported Materialize module by module
+@import "~materialize-css/sass/components/global";
+@import "~materialize-css/sass/components/grid";
+@import "~materialize-css/sass/components/navbar";
+@import "~materialize-css/sass/components/sideNav";
+@import "~materialize-css/sass/components/buttons";
+@import "~materialize-css/sass/components/dropdown";
+
+// Application style
+@import "app/all";

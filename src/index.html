@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Network Analyzer</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale = 1.0,maximum-scale = 0.8,width=device-width" /> 
+  </head>
+  
+  <body>
+    <app>Loading application...</app>
+        
+    <script>
+      if(typeof process !== 'undefined' && process.versions.electron.length !== 0) {
+        window.isElectronApp = true;
+        window.templateBaseUrl = require('path').join(__dirname, 'app');
+      } else {
+        window.isElectronApp = false;
+        window.templateBaseUrl = 'app';
+      }
+    </script>    
+        
+    <script src="../build/common.js"></script>
+    <script src="../build/angular2.js"></script>
+    <script src="../build/app.js"></script>
+  </body> 
+</html>

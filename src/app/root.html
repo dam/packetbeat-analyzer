@@ -1,0 +1,42 @@
+<header>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo hide-on-med-and-down"></a>
+				<a href="#" data-activates="mobile-links" class="button-collapse"><i class="fa fa-bars"></i></a>
+				<div id="app-title" class="right">
+					<span>Simple Network Analyzer</span>
+				</div>
+				<ul id="mobile-links" class="side-nav">
+					<li><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
+					<li><a [routerLink]="['Files']"><i class="fa fa-folder-open"></i> Files</a></li>
+					<li><a [routerLink]="['Network']"><i class="fa fa-tasks"></i> Network</a></li>
+					<li><a [routerLink]="['Contacts']"><i class="fa fa-users"></i> Contacts</a></li>
+					<li><a [routerLink]="['Alerts']"><i class="fa fa-exclamation-triangle"></i> Alerts</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</header>
+<main>
+  <div id="main-container" class="row">
+		<div id="desktop-links-container" class="col hide-on-med-and-down l2">
+			<ul>
+				<li><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
+				<li><a [routerLink]="['Files']"><i class="fa fa-folder-open"></i> Files</a></li>
+				<li><a [routerLink]="['Network']"><i class="fa fa-tasks"></i> Network</a></li>
+				<li><a [routerLink]="['Contacts']"><i class="fa fa-users"></i> Contacts</a></li>
+				<li><a [routerLink]="['Alerts']"><i class="fa fa-exclamation-triangle"></i> Alerts</a></li>
+			</ul>
+		</div>
+		<div class="col s12 l10">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</main>
+<footer class="page-footer">
+	<div class="footer-copyright">
+		<div class="container">
+		</div>
+	</div>
+</footer>
