@@ -1,5 +1,5 @@
-# sna
-Simple Network Analyser. An Electron project to display simple real-time insights about your network.
+# Packetbeat Analyzer
+Simple Network Analyzer. An Electron project to display simple real-time insights about your network using the Beats stack
 
 ## Environment
 

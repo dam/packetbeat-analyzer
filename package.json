@@ -1,7 +1,7 @@
 {
-  "name": "sna",
+  "name": "Packetbeat-Analyzer",
   "version": "0.0.1",
-  "description": "An Electron project to display simple real-time insights about your network.",
+  "description": "An Electron project to display simple real-time insights about your network using the Beats stack",
   "main": "./src/main.js",
   "scripts": {
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dam/sna.git"
+    "url": "git+https://github.com/dam/packetbeat-analyzer.git"
   },
   "author": "Damien Imberdis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dam/sna/issues"
+    "url": "https://github.com/dam/packetbeat-analyzer/issues"
   },
-  "homepage": "https://github.com/dam/sna#readme",
+  "homepage": "https://github.com/dam/packetbeat-analyzer#readme",
   "devDependencies": {
     "css-loader": "^0.23.0",
     "electron-prebuilt": "^0.36.0",
@@ -36,6 +36,7 @@
   "dependencies": {
     "angular2": "^2.0.0-beta.0",
     "d3.js": "3.5.12",
+    "elasticsearch": "^10.1.2",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "font-awesome": "^4.5.0",

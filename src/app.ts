@@ -12,5 +12,6 @@ import { bootstrap } from 'angular2/platform/browser';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_BINDINGS, APP_BASE_HREF } from 'angular2/router';
 import { AppComponent } from './app/root';
+import { QueriesService } from './app/services/queries';
 
-bootstrap(AppComponent, [HTTP_PROVIDERS, ROUTER_BINDINGS, provide(APP_BASE_HREF, { useValue: '/'})]);
+bootstrap(AppComponent, [HTTP_PROVIDERS, ROUTER_BINDINGS, provide(APP_BASE_HREF, { useValue: '/'}), QueriesService]);
