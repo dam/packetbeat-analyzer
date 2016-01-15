@@ -9,18 +9,8 @@
   <body>
     <app>Loading application...</app>
         
-    <script>
-      if(typeof process !== 'undefined' && process.versions.electron.length !== 0) {
-        window.isElectronApp = true;
-        window.templateBaseUrl = require('path').join(__dirname, 'app');
-      } else {
-        window.isElectronApp = false;
-        window.templateBaseUrl = 'app';
-      }
-    </script>    
-        
-    <script src="../build/common.js"></script>
-    <script src="../build/angular2.js"></script>
-    <script src="../build/app.js"></script>
+    <script src="./build/common.js"></script>
+    <script src="./build/angular2.js"></script>
+    <script src="./build/app.js"></script>
   </body> 
 </html>

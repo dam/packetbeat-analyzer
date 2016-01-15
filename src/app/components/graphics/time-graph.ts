@@ -21,15 +21,13 @@ export class TimeGraph {
 	private detailHeight: number;
 	private detailMargin: number;
 	
-	constructor(public selector: string, private queries) {
+	constructor(public selector: string) {
 		this.container    = $(selector);
 		this.margin       = { top: 80, right: 60, bottom: 40, left: 60 };
 		this.detailWidth  = 98;
     this.detailHeight = 55;
     this.detailMargin = 10;
-		
-		this.data = this.queries.getUsage();		
-		this.data.forEach(datum => datum.selected = false);
+		this.data = [];		
 	}
 	
 	private resetView() {
@@ -153,6 +151,8 @@ export class TimeGraph {
 		this.svgHeight    = parseInt(this.container.css('height'));
 		this.chartWidth   = this.svgWidth - this.margin.left - this.margin.right;
 		this.chartHeight  = this.svgHeight - this.margin.top - this.margin.bottom;
+		
+		this.data.forEach(datum => datum.selected = false);
 		
 		this.resetView();
 		

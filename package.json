@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-    "server": "webpack-dev-server --content-base src/",
+    "start": "webpack-dev-server --content-base src/",
     "electron": "electron src"
   },
   "repository": {

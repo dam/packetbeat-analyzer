@@ -10,8 +10,13 @@ require('lodash');
 import { provide } from "angular2/core";
 import { bootstrap } from 'angular2/platform/browser';
 import { HTTP_PROVIDERS } from 'angular2/http';
-import { ROUTER_BINDINGS, APP_BASE_HREF } from 'angular2/router';
+import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 import { AppComponent } from './app/root';
 import { QueriesService } from './app/services/queries';
 
-bootstrap(AppComponent, [HTTP_PROVIDERS, ROUTER_BINDINGS, provide(APP_BASE_HREF, { useValue: '/'}), QueriesService]);
+bootstrap(AppComponent, [
+	HTTP_PROVIDERS, 
+	ROUTER_PROVIDERS,
+	provide(LocationStrategy, { useClass: HashLocationStrategy }), 
+	QueriesService
+]);

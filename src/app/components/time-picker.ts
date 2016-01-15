@@ -23,8 +23,9 @@ class TimePeriod {
 })
 export class TimePickerComponent {
   time_periods = [
-		new TimePeriod('This Month'),
-		new TimePeriod('This Week')
+		new TimePeriod('Today'),
+		new TimePeriod('This Week'),
+		new TimePeriod('This Month')
 	];	
 	selected_time_period = this.time_periods[0];
 	

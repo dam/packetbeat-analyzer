@@ -1,6 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 'use strict';
 import { Injectable } from 'angular2/core';
+var es = require('elasticsearch');
 
 export interface Data {
 	date: Date,
@@ -10,9 +11,27 @@ export interface Data {
 
 @Injectable()
 export class QueriesService {
-	usage_data: Data[];
+	usage_data: Data[]; 
+	client;
 	
-	getUsage() {
+	constructor() {
+		this.client = new es.Client({
+			host: 'localhost:9200',
+			log: 'trace'
+		});
+	}
+	
+	// TODO: pass values from the main filters
+	getData() {
+		console.log('passing get usage');
+		
+		this.client.search({q: 'pants'})
+		  .then((body) => { 
+				console.log(body); 
+			}, (error) => {
+				console.log(error.message);
+			});
+		
 		return [
 			{ date: new Date('2015-12-01'), value: Math.floor(Math.random() * 1000) },
 		  { date: new Date('2015-12-02'), value: Math.floor(Math.random() * 1000) },
@@ -27,3 +46,5 @@ export class QueriesService {
 		]
 	}
 }
+
+// TODO: add a real elasticsearch query

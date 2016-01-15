@@ -1,5 +1,5 @@
 # Packetbeat Analyzer
-Simple Network Analyzer. An Electron project to display simple real-time insights about your network using the Beats stack
+An Electron project to display simple real-time insights about your network using the Beats stack
 
 ## Environment
 
@@ -9,19 +9,39 @@ The goal of this project is to replace Kibana by a simplified UI that highlight 
 
 This code can run as a native desktop application or on the cloud.
 
-## Installation
+## Installation & configuration
 
 ### Dependencies
 
-cf. (Elasticsearch Installation Section)[https://www.elastic.co/guide/en/beats/libbeat/1.0.1/getting-started.html#elasticsearch-installation] to install the ElasticSearch database from the Beats platform.
-cf. (Packetbeat Getting Started)[https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-getting-started.html] to install, configure and run packetbeat on your local system
+**Packetbeat**
 
-### The application
+cf. [Packetbeat Getting Started](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-getting-started.html) to install, configure and run packetbeat on your local system
+We are currently developping on the version **1.0.0** of Packetbeat 
+
+**Elasticsearch**
+
+cf. [Elasticsearch Installation Section](https://www.elastic.co/guide/en/beats/libbeat/1.0.1/getting-started.html#elasticsearch-installation) to install the ElasticSearch database.
+We are currently developping on the version **1.7.3** of ElasticSearch 
+
+Edit the configuration file *elasticsearch.yml* as follow:
+
+    http.cors.enabled: true
+    http.cors.allow-origin: "*"
+
+## Development
 
 To install all node packages, run the following command:
+    
     npm install
     
-Then check that your installation is running correctly, assessing the application your browser:
-    npm run server
+Watch your file and build your files with webpack, using the command:  
 
+    npm run watch  
     
+Then check that your application is running correctly with electron:
+    
+    npm run electron
+    
+To speed up your development, run a server with updated source code using the command:
+
+    npm run start
