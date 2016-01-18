@@ -13,10 +13,12 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 import { AppComponent } from './app/root';
 import { QueriesService } from './app/services/queries';
+import { config } from './app/services/config';
 
 bootstrap(AppComponent, [
 	HTTP_PROVIDERS, 
 	ROUTER_PROVIDERS,
 	provide(LocationStrategy, { useClass: HashLocationStrategy }), 
+	provide('App.config', { useValue: config }),
 	QueriesService
 ]);

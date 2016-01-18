@@ -2,6 +2,7 @@
 'use strict';
 import { Injectable } from 'angular2/core';
 var es = require('elasticsearch');
+import { config } from './config';
 
 export interface Data {
 	date: Date,
@@ -15,22 +16,17 @@ export class QueriesService {
 	client;
 	
 	constructor() {
-		this.client = new es.Client({
-			host: 'localhost:9200',
-			log: 'trace'
-		});
+		this.client = new es.Client(config.es);
 	}
 	
-	// TODO: pass values from the main filters
-	getData() {
-		console.log('passing get usage');
-		
-		this.client.search({q: 'pants'})
-		  .then((body) => { 
-				console.log(body); 
-			}, (error) => {
-				console.log(error.message);
-			});
+  // TODO: work on real queries to ES
+	getData(state) {
+		// this.client.search({q: 'pants'})
+		//   .then((body) => { 
+		// 		console.log(body); 
+		// 	}, (error) => {
+		// 		console.log(error.message);
+		// 	});
 		
 		return [
 			{ date: new Date('2015-12-01'), value: Math.floor(Math.random() * 1000) },
@@ -46,5 +42,3 @@ export class QueriesService {
 		]
 	}
 }
-
-// TODO: add a real elasticsearch query

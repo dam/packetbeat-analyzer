@@ -1,12 +1,12 @@
 <div class="row top-filters-container">
 	<div class="col s6">
-		<metric-picker></metric-picker>
+		<metric-picker [state]="uiState"></metric-picker>
 	</div>
 	<div class="col s6">
-		<time-picker></time-picker>
+		<time-picker [state]="uiState"></time-picker>
 	</div>
 </div>
 <div class="divider"></div>
 <div class="row">
-	<time-graph></time-graph>
+	<time-graph [state]="uiState"></time-graph>
 </div>

@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 'use strict';
-import { Component, Output, EventEmitter } from 'angular2/core';
+import { Component, Output, EventEmitter, AfterContentInit } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { OverviewComponent } from './components/overview';
 import { NetworkComponent } from './components/network';
@@ -18,7 +18,7 @@ declare var $:any;
 	{ path: '/network', name: 'Network', component: NetworkComponent },
 	{ path: '/alerts', name: 'Alerts', component: AlertsComponent }	
 ])
-export class AppComponent {
+export class AppComponent implements AfterContentInit {
 	ngAfterContentInit() {
 	  $(".button-collapse").sideNav();
 	}

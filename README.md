@@ -45,3 +45,7 @@ Then check that your application is running correctly with electron:
 To speed up your development, run a server with updated source code using the command:
 
     npm run start
+    
+### References
+
+[Electron API examples](https://github.com/hokein/electron-sample-apps)    
