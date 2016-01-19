@@ -1,12 +1,18 @@
 <div class="row top-filters-container">
-	<div class="col s6">
-		<metric-picker [state]="uiState"></metric-picker>
+	<div class="col s5">
+		<metric-picker [state]="uiState" title="Select the metric to display on your dashboard"></metric-picker>
 	</div>
-	<div class="col s6">
-		<time-picker [state]="uiState"></time-picker>
+	<div class="col s5">
+		<time-picker [state]="uiState" title="Select the time frame of your data"></time-picker>
+	</div>
+	<div class="col s2">
+	  <a id="refresh-button" class="btn-floating waves-effect waves-light" title="Refresh your dashboard" (click)="refreshDashboard()" *ngIf="!refreshing"><i class="fa fa-refresh"></i></a>
+	  <div id="refresh-progress" class="progress" *ngIf="refreshing">
+      <div class="indeterminate"></div>
+    </div>
 	</div>
 </div>
 <div class="divider"></div>
 <div class="row">
-	<time-graph [state]="uiState"></time-graph>
+	<time-graph [refresh]="refreshing" [state]="uiState"></time-graph>
 </div>

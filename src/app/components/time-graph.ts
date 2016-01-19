@@ -1,12 +1,15 @@
 /// <reference path="../../typings/tsd.d.ts" />
 'use strict';
 import { 
-	Component, Inject, Input, 
+	Component, Inject, Input, forwardRef,
   OnInit, AfterContentInit, DoCheck } from 'angular2/core';
 import { TimeGraph } from './graphics/time-graph'; 
 import { QueriesService } from '../services/queries';
+import { OverviewComponent } from './overview';
+import { Data, TOAST_DURATION, DEBOUNCE_DURATION } from '../definitions';
 
 declare var $:any;
+declare var Materialize;
 
 @Component({
 	selector: 'time-graph',
@@ -16,11 +19,13 @@ declare var $:any;
 })
 export class TimeGraphComponent implements OnInit, AfterContentInit, DoCheck {
 	@Input() state;
+	@Input() refresh;
 	graph: TimeGraph;
-	savedState;
+	private parent;
 
-	constructor(private queriesService: QueriesService, @Inject('App.config') config) {
-	}
+	constructor(private queriesService: QueriesService, @Inject(forwardRef(() => OverviewComponent)) overviewComponent) {
+	  this.parent = overviewComponent;
+  }
 
 	ngOnInit() {
 		this.graph = new TimeGraph('#time-graph');
@@ -28,26 +33,29 @@ export class TimeGraphComponent implements OnInit, AfterContentInit, DoCheck {
 	}
 
 	ngAfterContentInit() {
-		$(window).on('resize', _.debounce(this.redrawGraph, 500));
+		$(window).on('resize', _.debounce(this.redrawGraph, DEBOUNCE_DURATION));
 	}	
 	
 	ngDoCheck() {
-		if(this.stateChanged()) {
+		if(this.refresh) {
+			this.refresh = false;
 			this.refreshGraph();
-		}
+	  }
 	}
 
 	private redrawGraph = () => this.graph.draw();
-	private refreshGraph = () => {
+	
+	private refreshGraph() {
 		if(this.graph) {
-			let data = this.queriesService.getData(this.state);
-			this.savedState = _.clone(this.state);
-      this.graph.data = data; 
-		  this.graph.draw();
+			this.queriesService.getFakeData(this.state).then((data: Data[]) => {
+        this.graph.data = data; 
+				this.graph.state = this.state;
+		    this.graph.draw();	
+				this.parent.refreshComplete();
+			}).catch((reason) => {
+				Materialize.toast(reason, TOAST_DURATION, 'error');
+				this.parent.refreshComplete();
+			})	
 		}
-	}
-	private stateChanged(): boolean {
-		return (this.state.metric !== this.savedState.metric) || 
-		       (this.state.time !== this.savedState.time);
 	}
 }

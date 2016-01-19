@@ -8,7 +8,7 @@
 					<span>Packetbeat Analyzer</span>
 				</div>
 				<ul id="mobile-links" class="side-nav">
-					<li><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
+					<li class="active"><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
 					<li><a [routerLink]="['Network']"><i class="fa fa-tasks"></i> Network</a></li>
 					<li><a [routerLink]="['Alerts']"><i class="fa fa-exclamation-triangle"></i> Alerts</a></li>
 				</ul>
@@ -19,10 +19,10 @@
 <main>
   <div id="main-container" class="row">
 		<div id="desktop-links-container" class="col hide-on-med-and-down l2">
-			<ul>
-				<li><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
-				<li><a [routerLink]="['Network']"><i class="fa fa-tasks"></i> Network</a></li>
-				<li><a [routerLink]="['Alerts']"><i class="fa fa-exclamation-triangle"></i> Alerts</a></li>
+			<ul class="collection">
+				<li class="collection-item active"><a [routerLink]="['Overview']"><i class="fa fa-bar-chart"></i> Overview</a></li>
+				<li class="collection-item"><a [routerLink]="['Network']"><i class="fa fa-tasks"></i> Network</a></li>
+				<li class="collection-item"><a [routerLink]="['Alerts']"><i class="fa fa-exclamation-triangle"></i> Alerts</a></li>
 			</ul>
 		</div>
 		<div class="col s12 l10">

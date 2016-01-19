@@ -21,5 +21,12 @@ declare var $:any;
 export class AppComponent implements AfterContentInit {
 	ngAfterContentInit() {
 	  $(".button-collapse").sideNav();
+		$('#desktop-links-container a, #mobile-links a').click(function() {
+			let $item = $(this).parent();
+			let $collection = $item.parent(); 
+			
+			$collection.find('li').removeClass('active');
+			$item.addClass('active');
+		});
 	}
 }

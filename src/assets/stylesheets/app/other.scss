@@ -1,0 +1,10 @@
+.toast {
+  &.error { background-color: $error-color; }
+}
+
+.top-filters-container {
+	padding: $md-margin;
+  padding-bottom: 0px;
+}
+
+#refresh-progress { top: 10px; }

@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 'use strict';
-import { Data } from '../../services/queries';
+import { Data, State } from '../../definitions';
 
 interface Margin {
 	top: number;
@@ -12,6 +12,7 @@ interface Margin {
 export class TimeGraph {
 	container;
 	data: Data[];
+	state: State;
 	private svgWidth: number;
 	private svgHeight: number;
 	private margin: Margin;
@@ -20,14 +21,14 @@ export class TimeGraph {
 	private detailWidth: number;
 	private detailHeight: number;
 	private detailMargin: number;
-	
+
 	constructor(public selector: string) {
 		this.container    = $(selector);
 		this.margin       = { top: 80, right: 60, bottom: 40, left: 60 };
 		this.detailWidth  = 98;
     this.detailHeight = 55;
     this.detailMargin = 10;
-		this.data = [];		
+		this.data = [];
 	}
 	
 	private resetView() {
@@ -62,10 +63,14 @@ export class TimeGraph {
       .y(function(d:any) { return y(d.value); });
 			
 	  // Add Title
+		let time_label = '';
+		if(this.state.time == 'today') { time_label = _.capitalize(this.state.time); } 
+		else { time_label = `this ${_.capitalize(this.state.time)}`; } 
+		
 		svg.append('text')
 	    .attr('id', 'time-graph-title')
 			.attr("transform", `translate(-20,-40)`)
-			.text('Upload Usage over Time');
+			.text(`${_.capitalize(this.state.metric)} for ${time_label}`);
 			
 	  // Add axis
 		svg.append('g')

@@ -41,7 +41,43 @@ nav {
   }
 }
 
-.top-filters-container {
-	padding: $md-margin;
-  padding-bottom: 0px;
+#desktop-links-container {
+  background-color: $primary-color;
+  padding: 0;
+ 
+  ul {
+    li {
+      font-size: $md-size;
+      transition: background-color .3s;
+   
+      &:hover {
+        background-color: $primary-color;
+      }
+      &.active {
+        background-color: white;
+        border-right: 4px solid $secondary-color;
+      }
+      a {
+        color: $navbar-font-color;
+        display: inherit;
+      }
+    }
+  }  
 }
+
+ #mobile-links {
+   background-color:  $primary-color;
+  
+   li {
+     background-color: white; 
+     transition: background-color .3s;
+     border-bottom: 1px solid $divider-color;
+      
+     &:hover { background-color: $primary-color; }
+     &.active { border-right: 4px solid $secondary-color; }
+     a { 
+       color: $navbar-font-color; 
+       &:hover { background-color: $primary-color; }  
+     }
+   }
+ }
