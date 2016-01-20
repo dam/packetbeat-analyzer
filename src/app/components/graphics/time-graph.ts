@@ -12,7 +12,7 @@ interface Margin {
 export class TimeGraph {
 	container;
 	data: Data[];
-	state: State;
+	state;
 	private svgWidth: number;
 	private svgHeight: number;
 	private margin: Margin;

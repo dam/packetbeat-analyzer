@@ -4,9 +4,9 @@
   "description": "An Electron project to display simple real-time insights about your network using the Beats stack",
   "main": "./src/main.js",
   "scripts": {
+    "start": "webpack-dev-server --content-base src/",
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-    "start": "webpack-dev-server --content-base src/",
     "electron": "electron src"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "lodash": "^4.0.0",
     "materialize-css": "^0.97.3",
     "moment": "^2.11.1",
+    "nconf": "^0.8.2",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.6",

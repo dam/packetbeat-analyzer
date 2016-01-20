@@ -6,10 +6,11 @@ import {
 import { TimeGraph } from './graphics/time-graph'; 
 import { QueriesService } from '../services/queries';
 import { OverviewComponent } from './overview';
-import { Data, TOAST_DURATION, DEBOUNCE_DURATION } from '../definitions';
+import { Data, TOAST_DURATION, DEBOUNCE_DURATION, IPC_TEMPO } from '../definitions';
 
 declare var $:any;
 declare var Materialize;
+declare var isElectronApp: boolean;
 
 @Component({
 	selector: 'time-graph',
@@ -28,8 +29,16 @@ export class TimeGraphComponent implements OnInit, AfterContentInit, DoCheck {
   }
 
 	ngOnInit() {
+		var self = this; 
+		
 		this.graph = new TimeGraph('#time-graph');
-		this.refreshGraph();
+		if(isElectronApp) {
+		  setTimeout(() => {
+				self.refreshGraph();
+			}, IPC_TEMPO)	
+		} else {
+			this.refreshGraph();
+		}
 	}
 
 	ngAfterContentInit() {
@@ -47,7 +56,7 @@ export class TimeGraphComponent implements OnInit, AfterContentInit, DoCheck {
 	
 	private refreshGraph() {
 		if(this.graph) {
-			this.queriesService.getFakeData(this.state).then((data: Data[]) => {
+			this.queriesService.getData(this.state).then((data: Data[]) => {
         this.graph.data = data; 
 				this.graph.state = this.state;
 		    this.graph.draw();	

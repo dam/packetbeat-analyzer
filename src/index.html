@@ -8,6 +8,15 @@
   
   <body>
     <app>Loading application...</app>
+    
+    <script>
+      if(typeof process !== 'undefined' && process.versions.electron.length !== 0) {
+         window.isElectronApp = true;
+         window.ipc = require('electron').ipcRenderer;
+       } else {
+         window.isElectronApp = false;
+       }
+    </script>  
       
     <script src="./build/common.js"></script>
     <script src="./build/angular2.js"></script>

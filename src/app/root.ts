@@ -7,6 +7,8 @@ import { NetworkComponent } from './components/network';
 import { AlertsComponent } from './components/alerts';
 
 declare var $:any;
+declare var isElectronApp: boolean;
+declare var ipc:any;
 
 @Component({
 	selector: 'app',

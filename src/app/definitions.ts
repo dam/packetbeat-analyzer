@@ -17,3 +17,4 @@ export interface Data {
 
 export const TOAST_DURATION = 5000;
 export const DEBOUNCE_DURATION = 200;
+export const IPC_TEMPO = 400;
